@@ -17,9 +17,9 @@ public class TasksTest {
         Assertions.assertFalse(meeting.matches("приложений"));// проверка поиска на окончание в topic
         Assertions.assertTrue(meeting.matches("НетоБанка"));//проверка поиска в project
         Assertions.assertFalse(meeting.matches("НетаБанка"));// проверка правильности написания слова
-        Assertions.assertFalse(meeting.matches("НетоБанк"));// проверка на окончание
+        Assertions.assertFalse(meeting.matches("НетоБанкинг"));// проверка на окончание
         Assertions.assertFalse(meeting.matches("новое"));//проверка в поиске project на отсутствующие слова
-        Assertions.assertTrue(meeting.matches("обеда"));// проверка в поиске start
+        Assertions.assertFalse(meeting.matches("обеда"));// проверка в поиске start
     }
 
     @Test

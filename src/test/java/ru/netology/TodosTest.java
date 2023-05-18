@@ -12,16 +12,16 @@ public class TodosTest {
     Meeting meeting = new Meeting(
             555,
             "Выкатка 3й версии приложения",
-            "Приложение НетоБанка",
+            "Приложение НетоБанка установить родителям",
             "Во вторник после обеда"
     );
     Todos todos = new Todos();
 
     @BeforeEach
-    public void setup(){
-            todos.add(simpleTask);
-            todos.add(epic);
-            todos.add(meeting);
+    public void setup() {
+        todos.add(simpleTask);
+        todos.add(epic);
+        todos.add(meeting);
     }
 
     @Test
@@ -30,30 +30,48 @@ public class TodosTest {
         Task[] actual = todos.findAll();
         Assertions.assertArrayEquals(expected, actual);
     }
+
     @Test
-    public void shouldSearchQueryOne(){
+    public void shouldSearchQueryOne() {
         Task[] expected = {epic};
         Task[] actual = todos.search("Молоко");
         Assertions.assertArrayEquals(expected, actual);
     }
+
     @Test
-    public void shouldSearchQueryTwo(){
+    public void shouldSearchQueryTwo() {
         Task[] expected = {};
         Task[] actual = todos.search("Обеда");
         Assertions.assertArrayEquals(expected, actual);
     }
+
     @Test
-    public void shouldSearchQueryThree(){
-        Task[] expected ={simpleTask};
-        Task[] actual = todos.search("родителям");
+    public void shouldSearchQueryThree() {
+        Task[] expected = {simpleTask};
+        Task[] actual = todos.search("Позвонить");
         Assertions.assertArrayEquals(expected, actual);
     }
+
     @Test
-    public void shouldSearchQueryFor(){
+    public void shouldSearchQueryFor() {
         Task[] expected = {meeting};
         Task[] actual = todos.search("3й");
         Assertions.assertArrayEquals(expected, actual);
 
+    }
+
+    @Test
+    public void shouldSearchQueryFive() {
+        Task[] expected = {simpleTask, meeting};
+        Task[] actual = todos.search("родителям");
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSearchQuerySix() {
+        Task[] expected = {};
+        Task[] actual = todos.search("колбаса");// когда не находится ни одна задача
+        Assertions.assertArrayEquals(expected, actual);
     }
 
 
